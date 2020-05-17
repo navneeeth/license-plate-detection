@@ -27,7 +27,7 @@ def read_training_data(training_directory):
         for each in range(10):
             image_path = os.path.join(training_directory, each_letter, each_letter + '_' + str(each) + '.jpg')
             # read each image of each character
-            img_details = imread(image_path, as_grey=True)
+            img_details = imread(image_path, as_gray=True)
             # converts each character image to binary image
             binary_image = img_details < threshold_otsu(img_details)
             # the 2D array of each image is flattened because the machine learning
@@ -56,7 +56,7 @@ def cross_validation(model, num_of_fold, train_data, train_label):
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
-training_dataset_dir = os.path.join(current_dir, 'train')
+training_dataset_dir = os.path.join(current_dir, 'trainds')
 
 image_data, target_data = read_training_data(training_dataset_dir)
 
@@ -76,4 +76,5 @@ svc_model.fit(image_data, target_data)
 save_directory = os.path.join(current_dir, 'models/svc/')
 if not os.path.exists(save_directory):
     os.makedirs(save_directory)
-joblib.dump(svc_model, save_directory+'/svc.pkl')
+joblib.dump(svc_model, current_dir+'/svc.sav')
+print(current_dir)
