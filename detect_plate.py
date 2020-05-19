@@ -3,10 +3,10 @@ from skimage.filters import threshold_otsu
 import matplotlib.pyplot as plt
 from skimage import measure
 from skimage.measure import regionprops
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import sys
-
+import random
 
 # car image -> grayscale image -> binary image
 #count=1317
@@ -32,10 +32,11 @@ ax1.imshow(gray_car_image, cmap="gray")
 threshold_value = threshold_otsu(gray_car_image)
 binary_car_image = gray_car_image > threshold_value
 # print(binary_car_image)
-#ax2.imshow(binary_car_image, cmap="gray")
+ax2.imshow(binary_car_image, cmap="gray")
 # ax2.imshow(gray_car_image, cmap="gray")
-#plt.show()
-
+plt.show()
+num = random.randint(1, 10000)
+#plt.savefig('detectplates'+str(num)+'.png')
 # CCA (finding connected regions) of binary image
 
 
@@ -53,7 +54,7 @@ min_height, max_height, min_width, max_width = plate_dimensions
 
 
 fig, (ax1) = plt.subplots(1)
-#ax1.imshow(gray_car_image, cmap="gray")
+ax1.imshow(gray_car_image, cmap="gray")
 flag =0
 # regionprops creates a list of properties of all the labelled regions
 for region in regionprops(label_image):
@@ -84,11 +85,11 @@ for region in regionprops(label_image):
                                        linewidth=2, fill=False)
         ax1.add_patch(rectBorder)
         # let's draw a red rectangle over those regions
-#if(flag == 1):
+if(flag == 1):
     # print(plate_like_objects[0])
-    #plt.show(block=True)
-
-
+    plt.show()
+    num = random.randint(1, 10000)
+    #plt.savefig('detectplates'+str(num)+'.png')
 
 
 if(flag==0):
@@ -97,7 +98,7 @@ if(flag==0):
     plate_like_objects = []
 
     fig, (ax1) = plt.subplots(1)
-    #ax1.imshow(gray_car_image, cmap="gray")
+    ax1.imshow(gray_car_image, cmap="gray")
 
     # regionprops creates a list of properties of all the labelled regions
     for region in regionprops(label_image):
@@ -128,4 +129,6 @@ if(flag==0):
             ax1.add_patch(rectBorder)
             # let's draw a red rectangle over those regions
     # print(plate_like_objects[0])
-    #plt.show(block=True)
+    plt.show()
+    num = random.randint(1, 10000)
+    #plt.savefig('detectplates'+str(num)+'.png')
