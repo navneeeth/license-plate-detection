@@ -10,8 +10,7 @@ percentageCompleted = round(percentageCompleted, 2)
 print(colorama.Fore.GREEN+"Completed " + str(percentageCompleted) + "% out of 100.")
 if(len(segment_characters.characters) > 0):
     print(colorama.Style.DIM+colorama.Fore.WHITE+"Loading model...")
-    filename = './svc.sav'
-    #model = pickle.load(open(filename, 'rb'))
+    filename = './svc1.sav'
     model = joblib.load(filename, 'r')
     
     print(colorama.Style.DIM+colorama.Fore.WHITE+'Model loaded. \nPredicting characters of number plate...')
@@ -21,9 +20,6 @@ if(len(segment_characters.characters) > 0):
         each_character = each_character.reshape(1, -1);
         result = model.predict(each_character)
         classification_result.append(result)
-    
-    #print('Classification result')
-    #print(classification_result)
     
     plate_string = ''
     for eachPredict in classification_result:

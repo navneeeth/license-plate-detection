@@ -17,7 +17,7 @@ for x in detect_plate.plate_like_objects:
     labelled_plate = measure.label(license_plate)
     
     fig, ax1 = plt.subplots(1)
-    ax1.imshow(license_plate, cmap="gray")
+    #ax1.imshow(license_plate, cmap="gray")
     # the next two lines is based on the assumptions that the width of
     # a license plate should be between 5% and 15% of the license plate,
     # and height should be between 35% and 60%
@@ -44,15 +44,4 @@ for x in detect_plate.plate_like_objects:
     
             # this is just to keep track of the arrangement of the characters
             column_list.append(x0)
-    # print(characters)
-    if(len(column_list)>0):
-        num = random.randint(1, 10000)
-        plt.show()
-        #plt.savefig('images'+str(num)+'.png')
-    #print("Printing Column images")
-    #print(column_list)
-    #print(characters)
     count = count + 1
-#print(len(characters))
-#if len(column_list) > 0:
-    #print(column_list) 

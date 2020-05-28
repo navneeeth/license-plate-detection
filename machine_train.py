@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jan 31 12:05:28 2020
+Created on Fri Apr 24 12:05:28 2020
 
 @author: navneethkrishna
 """
@@ -76,5 +76,5 @@ svc_model.fit(image_data, target_data)
 save_directory = os.path.join(current_dir, 'models/svc/')
 if not os.path.exists(save_directory):
     os.makedirs(save_directory)
-joblib.dump(svc_model, current_dir+'/svc.sav')
+joblib.dump(svc_model, current_dir+'/svc1.sav')
 print(current_dir)
